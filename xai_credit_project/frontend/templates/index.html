@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kredi Temerrüt Tahmin Sistemi</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Kredi Temerrüt Tahmin Sistemi</h1>
+        
+        <!-- Model Eğitim Bölümü -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h2>Model Eğitimi</h2>
+            </div>
+            <div class="card-body">
+                <button id="trainModel" class="btn btn-primary">Modeli Eğit</button>
+                <div id="trainingStatus" class="mt-3"></div>
+                <div id="modelPerformance" class="mt-3"></div>
+            </div>
+        </div>
+        
+        <!-- Tahmin Bölümü -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h2>Kredi Temerrüt Tahmini</h2>
+            </div>
+            <div class="card-body">
+                <form id="predictionForm">
+                    <div class="mb-3">
+                        <label for="employed" class="form-label">İstihdam Durumu</label>
+                        <select class="form-select" id="employed" required>
+                            <option value="1">Çalışıyor</option>
+                            <option value="0">Çalışmıyor</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="bankBalance" class="form-label">Banka Bakiyesi</label>
+                        <input type="number" class="form-control" id="bankBalance" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="annualSalary" class="form-label">Yıllık Maaş</label>
+                        <input type="number" class="form-control" id="annualSalary" required>
+                    </div>
+                    <button type="submit" class="btn btn-success">Tahmin Et</button>
+                </form>
+                <div id="predictionResult" class="mt-4"></div>
+            </div>
+        </div>
+        
+        <!-- Sonuç Raporları -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h2>Sonuç Raporları</h2>
+            </div>
+            <div class="card-body">
+                <div class="list-group">
+                    <a href="/results/rapor.html" target="_blank" class="list-group-item list-group-item-action">
+                        Detaylı Model Raporu
+                    </a>
+                    <a href="/results/shap_ozet.png" target="_blank" class="list-group-item list-group-item-action">
+                        SHAP Özet Grafiği
+                    </a>
+                    <a href="/results/lime_aciklama.html" target="_blank" class="list-group-item list-group-item-action">
+                        LIME Açıklamaları
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html> 

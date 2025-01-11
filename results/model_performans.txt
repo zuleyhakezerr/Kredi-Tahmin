@@ -1,0 +1,13 @@
+Model Performans Raporu
+=======================
+
+ROC AUC Skoru: 0.9334
+
+              precision    recall  f1-score   support
+
+           0       0.99      0.89      0.94      1933
+           1       0.18      0.75      0.29        61
+
+    accuracy                           0.89      1994
+   macro avg       0.59      0.82      0.62      1994
+weighted avg       0.97      0.89      0.92      1994
